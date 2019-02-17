@@ -4,18 +4,18 @@ Our project aims to create a clear and easy to understand visualization for phot
 
 
 ## View pages on CodePen:
-### Aperture
+#### Aperture:
 
 https://codepen.io/cynthiatso/full/rvGxLJ
 
-### Shutter Speed
+#### Shutter Speed:
 
 https://codepen.io/cynthiatso/full/BxPxbY
 
-### ISO
+#### ISO:
 
 https://codepen.io/cynthiatso/full/odQadj
 
-### Exposure
+#### Exposure:
 
 https://codepen.io/cynthiatso/full/Lryvxz
