@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+  <meta charset="UTF-8">
+  <title>iso</title>
+  
+</head>
+<style>
+	*{
+/*   border:solid 1px #eee; */
+  box-sizing:border-box;
+  vertical-align:top;
+  font-family:Helvetica, Arial, serif;
+  letter-spacing: 0.5px;
+  color: #fff;
+}
+
+html,body{
+  width: 100%; height:100%;
+  padding:0px;
+  margin:0px;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+li {
+    display:inline-block;
+    width:150px;
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    background-color:#12074e;
+    font-weight:bold;
+}
+
+li a:hover:not(.active) {
+    background-color: #b2b2b2;
+}
+
+.active {
+    background-color: #322482;
+  border-bottom:3px solid white;
+}
+
+.nav{
+  background-color:#12074e;
+   text-align: center;
+   margin:0px;
+}
+
+.i_top{
+  display:block;
+  text-align: center;
+  padding: 0px;
+  margin-left: 30px;
+  margin-right: 30px
+}
+
+.i_top h1{
+  display:inline-block;
+  margin-top: 20px;
+}
+
+.i_top p{
+  display:inline-block;
+  margin-top: 20px;
+  margin-left: 20px;
+  width: 600px;
+}
+
+.i_middle{
+  text-align: center;
+  margin-top:20px
+}
+
+.light{
+  margin-top: 30px;
+}
+
+#light_b_3{
+  margin-right: 130px;
+  
+}
+
+#light_b_5{
+  margin-right: 190px;
+  
+}
+
+.bar{
+  height: 50px
+}
+
+
+.slider {
+    -webkit-appearance: none;
+    width: 550px;
+    height: 7px;
+  margin-top: 35px;
+    background: #fff;
+    outline: none;
+    -webkit-transition: .5s;
+}
+
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 9px;
+    height: 25px;
+    background: #fff;
+}
+
+.slider::-moz-range-thumb {
+    width: 9px;
+    height: 25px;
+}
+
+.i_down{
+  margin-top:30px;
+  text-align: center;
+}
+
+.grain{
+  display: inline-block;
+  margin-top: 10px;
+}
+
+.low_grain{
+  margin-right: 200px;
+}
+
+.mid_grain{
+  margin-right: 190px;
+}
+
+.dot {
+  height: 10px;
+  width: 10px;
+  background-color: #fff;
+  border-radius: 50%;
+  display: inline-block;
+  margin: 5px;
+}
+
+
+.min,.num,.add{
+  display: inline-block;
+  font-size: 40px;
+  padding: 10px
+}
+
+.min, .add {
+  width: 50px;
+  text-align: center;
+  cursor: pointer;
+  animation: waggle 2s linear 2;
+/*   infinite */
+  transition-duration: 0.5s;
+  border-radius: 0.2em 0.2em 0.2em 0.2em;
+}
+
+@keyframes waggle {
+    0%, 7% {
+        transform: rotateZ(0);
+        background-color: #FFCD05;
+    }
+    15% {
+        transform: rotateZ(-15deg);
+        background-color: #FFCD05;
+    }
+    20% {
+        transform: rotateZ(10deg);
+        background-color: #FFCD05;
+    }
+    25% {
+        transform: rotateZ(-10deg);
+        background-color: #FFCD05;
+    }
+    30% {
+        transform: rotateZ(6deg);
+    }
+    35% {
+        transform: rotateZ(-4deg);
+    }
+    40%,
+    100% {
+        transform: rotateZ(0);
+    }
+}
+
+
+.min:hover, .add:hover {
+  background-color: #FFCD05;
+  color: #fff;
+}
+
+.text {
+  font-size: 18px;
+  position: absolute;
+  display: block;
+  left: 50%;
+  transform: translateX(-50%);
+  width:200px;
+  margin-top: 20px;
+  transition-duration: 0.5s;
+}
+
+
+a {
+    text-decoration: none;
+    display: inline-block;
+    padding: 8px 16px;
+}
+
+a:hover {
+    background-color: #ddd;
+    color: black;
+}
+
+.back{
+    color: white;
+   -webkit-transition-duration: 0.4s; 
+    transition-duration: 0.4s;
+    background-color: #12074e;
+    padding: 10px 30px;
+  float:left;
+}
+
+.next {
+    color: white;
+   -webkit-transition-duration: 0.4s; 
+    transition-duration: 0.4s;
+    background-color: #12074e;
+    padding: 10px 30px;
+  float:right;
+}
+</style>
+<body>
+
+  <ul class="nav">
+  <li><a href="index.html" class="botton">Home</a></li>
+<li><a href="aperture.html" class="button">Aperture</a></li>
+<li><a href="shutter_speed.html" class="button">Shutter Speed</a></li>
+  <li><a href="iso.html" class="active">ISO</a></li>
+  <li><a href="exposure.html" class="botton">Exposure</a></li>
+</ul>
+
+<div class="i_top">
+  <h1>ISO</h1>
+  <p>ISO represents the sensitivity ratings for camera sensors. <br>As you increase your ISO number, 
+your photos will be brighter.<br> It's a good tool to help you capture images in dark 
+environments or be more flexible about your aperture and shutter speed settings. 
+However, a photo taken at too high of an ISO will show a lot of grain.</p>
+</div>
+
+<div class="i_middle"> 
+  <div class="light">
+    <svg version="1.1" id="light_b_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve" width="40px">
+<path style="fill:#F0CE49;" d="M422.841,152.717C414.014,73.269,350.455,9.71,271.007,0.883C265.71,0.883,261.297,0,256,0
+	c-5.297,0-9.71,0-15.007,0.883C161.545,9.71,97.986,74.152,89.159,152.717c-6.179,56.497,15.007,107.697,52.083,143.007
+	c21.186,20.303,38.841,46.786,44.138,75.034h141.241c5.297-28.248,22.952-54.731,44.138-75.034
+	C407.834,260.414,429.021,209.214,422.841,152.717"/>
+<path style="fill:#B79529;" d="M203.034,176.552c-9.71,0-17.655,7.945-17.655,17.655c0,9.71,7.945,17.655,17.655,17.655h17.655
+	v-17.655C220.69,184.497,212.745,176.552,203.034,176.552L203.034,176.552z M291.31,211.862h17.655
+	c9.71,0,17.655-7.945,17.655-17.655c0-9.71-7.945-17.655-17.655-17.655s-17.655,7.945-17.655,17.655V211.862z M282.483,379.586
+	c-5.297,0-8.828-3.531-8.828-8.828V229.517h-35.31v141.241c0,5.297-3.531,8.828-8.828,8.828s-8.828-3.531-8.828-8.828V229.517
+	h-17.655c-19.421,0-35.31-15.89-35.31-35.31s15.89-35.31,35.31-35.31s35.31,15.89,35.31,35.31v17.655h35.31v-17.655
+	c0-19.421,15.89-35.31,35.31-35.31s35.31,15.89,35.31,35.31s-15.89,35.31-35.31,35.31H291.31v141.241
+	C291.31,376.055,287.779,379.586,282.483,379.586L282.483,379.586z"/>
+<path style="fill:#E8EDEE;" d="M185.379,370.759V476.69h141.241v-70.621v-35.31H185.379z"/>
+<g>
+	<path style="fill:#CBD4D8;" d="M269.241,512h-26.483c-7.945,0-15.89-3.531-21.186-10.593l-18.538-24.717h105.931l-18.538,24.717
+		C285.131,508.469,277.186,512,269.241,512"/>
+	<path style="fill:#CBD4D8;" d="M247.172,414.897c5.297,0,8.828-3.531,8.828-8.828s-3.531-8.828-8.828-8.828h-61.793v17.655H247.172
+		z"/>
+	<path style="fill:#CBD4D8;" d="M220.69,450.207c5.297,0,8.828-3.531,8.828-8.828s-3.531-8.828-8.828-8.828h-35.31v17.655H220.69z"
+		/>
+	<path style="fill:#CBD4D8;" d="M326.621,397.241h-35.31c-5.297,0-8.828,3.531-8.828,8.828s3.531,8.828,8.828,8.828h35.31v-8.828
+		V397.241z"/>
+	<path style="fill:#CBD4D8;" d="M264.828,432.552c-5.297,0-8.828,3.531-8.828,8.828s3.531,8.828,8.828,8.828h61.793v-17.655H264.828
+		z"/>
+</g>
+</svg>
+
+    <svg version="1.1" id="light_b_2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve" width="40px">
+<path style="fill:#F0CE49;" d="M422.841,152.717C414.014,73.269,350.455,9.71,271.007,0.883C265.71,0.883,261.297,0,256,0
+	c-5.297,0-9.71,0-15.007,0.883C161.545,9.71,97.986,74.152,89.159,152.717c-6.179,56.497,15.007,107.697,52.083,143.007
+	c21.186,20.303,38.841,46.786,44.138,75.034h141.241c5.297-28.248,22.952-54.731,44.138-75.034
+	C407.834,260.414,429.021,209.214,422.841,152.717"/>
+<path style="fill:#B79529;" d="M203.034,176.552c-9.71,0-17.655,7.945-17.655,17.655c0,9.71,7.945,17.655,17.655,17.655h17.655
+	v-17.655C220.69,184.497,212.745,176.552,203.034,176.552L203.034,176.552z M291.31,211.862h17.655
+	c9.71,0,17.655-7.945,17.655-17.655c0-9.71-7.945-17.655-17.655-17.655s-17.655,7.945-17.655,17.655V211.862z M282.483,379.586
+	c-5.297,0-8.828-3.531-8.828-8.828V229.517h-35.31v141.241c0,5.297-3.531,8.828-8.828,8.828s-8.828-3.531-8.828-8.828V229.517
+	h-17.655c-19.421,0-35.31-15.89-35.31-35.31s15.89-35.31,35.31-35.31s35.31,15.89,35.31,35.31v17.655h35.31v-17.655
+	c0-19.421,15.89-35.31,35.31-35.31s35.31,15.89,35.31,35.31s-15.89,35.31-35.31,35.31H291.31v141.241
+	C291.31,376.055,287.779,379.586,282.483,379.586L282.483,379.586z"/>
+<path style="fill:#E8EDEE;" d="M185.379,370.759V476.69h141.241v-70.621v-35.31H185.379z"/>
+<g>
+	<path style="fill:#CBD4D8;" d="M269.241,512h-26.483c-7.945,0-15.89-3.531-21.186-10.593l-18.538-24.717h105.931l-18.538,24.717
+		C285.131,508.469,277.186,512,269.241,512"/>
+	<path style="fill:#CBD4D8;" d="M247.172,414.897c5.297,0,8.828-3.531,8.828-8.828s-3.531-8.828-8.828-8.828h-61.793v17.655H247.172
+		z"/>
+	<path style="fill:#CBD4D8;" d="M220.69,450.207c5.297,0,8.828-3.531,8.828-8.828s-3.531-8.828-8.828-8.828h-35.31v17.655H220.69z"
+		/>
+	<path style="fill:#CBD4D8;" d="M326.621,397.241h-35.31c-5.297,0-8.828,3.531-8.828,8.828s3.531,8.828,8.828,8.828h35.31v-8.828
+		V397.241z"/>
+	<path style="fill:#CBD4D8;" d="M264.828,432.552c-5.297,0-8.828,3.531-8.828,8.828s3.531,8.828,8.828,8.828h61.793v-17.655H264.828
+		z"/>
+</g>
+</svg>
+    
+    <svg version="1.1" id="light_b_3" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve" width="40px">
+<path style="fill:#F0CE49;" d="M422.841,152.717C414.014,73.269,350.455,9.71,271.007,0.883C265.71,0.883,261.297,0,256,0
+	c-5.297,0-9.71,0-15.007,0.883C161.545,9.71,97.986,74.152,89.159,152.717c-6.179,56.497,15.007,107.697,52.083,143.007
+	c21.186,20.303,38.841,46.786,44.138,75.034h141.241c5.297-28.248,22.952-54.731,44.138-75.034
+	C407.834,260.414,429.021,209.214,422.841,152.717"/>
+<path style="fill:#B79529;" d="M203.034,176.552c-9.71,0-17.655,7.945-17.655,17.655c0,9.71,7.945,17.655,17.655,17.655h17.655
+	v-17.655C220.69,184.497,212.745,176.552,203.034,176.552L203.034,176.552z M291.31,211.862h17.655
+	c9.71,0,17.655-7.945,17.655-17.655c0-9.71-7.945-17.655-17.655-17.655s-17.655,7.945-17.655,17.655V211.862z M282.483,379.586
+	c-5.297,0-8.828-3.531-8.828-8.828V229.517h-35.31v141.241c0,5.297-3.531,8.828-8.828,8.828s-8.828-3.531-8.828-8.828V229.517
+	h-17.655c-19.421,0-35.31-15.89-35.31-35.31s15.89-35.31,35.31-35.31s35.31,15.89,35.31,35.31v17.655h35.31v-17.655
+	c0-19.421,15.89-35.31,35.31-35.31s35.31,15.89,35.31,35.31s-15.89,35.31-35.31,35.31H291.31v141.241
+	C291.31,376.055,287.779,379.586,282.483,379.586L282.483,379.586z"/>
+<path style="fill:#E8EDEE;" d="M185.379,370.759V476.69h141.241v-70.621v-35.31H185.379z"/>
+<g>
+	<path style="fill:#CBD4D8;" d="M269.241,512h-26.483c-7.945,0-15.89-3.531-21.186-10.593l-18.538-24.717h105.931l-18.538,24.717
+		C285.131,508.469,277.186,512,269.241,512"/>
+	<path style="fill:#CBD4D8;" d="M247.172,414.897c5.297,0,8.828-3.531,8.828-8.828s-3.531-8.828-8.828-8.828h-61.793v17.655H247.172
+		z"/>
+	<path style="fill:#CBD4D8;" d="M220.69,450.207c5.297,0,8.828-3.531,8.828-8.828s-3.531-8.828-8.828-8.828h-35.31v17.655H220.69z"
+		/>
+	<path style="fill:#CBD4D8;" d="M326.621,397.241h-35.31c-5.297,0-8.828,3.531-8.828,8.828s3.531,8.828,8.828,8.828h35.31v-8.828
+		V397.241z"/>
+	<path style="fill:#CBD4D8;" d="M264.828,432.552c-5.297,0-8.828,3.531-8.828,8.828s3.531,8.828,8.828,8.828h61.793v-17.655H264.828
+		z"/>
+</g>
+</svg>
+    
+    <svg version="1.1" id="light_b_4" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve" width="40px">
+<path style="fill:#F0CE49;" d="M422.841,152.717C414.014,73.269,350.455,9.71,271.007,0.883C265.71,0.883,261.297,0,256,0
+	c-5.297,0-9.71,0-15.007,0.883C161.545,9.71,97.986,74.152,89.159,152.717c-6.179,56.497,15.007,107.697,52.083,143.007
+	c21.186,20.303,38.841,46.786,44.138,75.034h141.241c5.297-28.248,22.952-54.731,44.138-75.034
+	C407.834,260.414,429.021,209.214,422.841,152.717"/>
+<path style="fill:#B79529;" d="M203.034,176.552c-9.71,0-17.655,7.945-17.655,17.655c0,9.71,7.945,17.655,17.655,17.655h17.655
+	v-17.655C220.69,184.497,212.745,176.552,203.034,176.552L203.034,176.552z M291.31,211.862h17.655
+	c9.71,0,17.655-7.945,17.655-17.655c0-9.71-7.945-17.655-17.655-17.655s-17.655,7.945-17.655,17.655V211.862z M282.483,379.586
+	c-5.297,0-8.828-3.531-8.828-8.828V229.517h-35.31v141.241c0,5.297-3.531,8.828-8.828,8.828s-8.828-3.531-8.828-8.828V229.517
+	h-17.655c-19.421,0-35.31-15.89-35.31-35.31s15.89-35.31,35.31-35.31s35.31,15.89,35.31,35.31v17.655h35.31v-17.655
+	c0-19.421,15.89-35.31,35.31-35.31s35.31,15.89,35.31,35.31s-15.89,35.31-35.31,35.31H291.31v141.241
+	C291.31,376.055,287.779,379.586,282.483,379.586L282.483,379.586z"/>
+<path style="fill:#E8EDEE;" d="M185.379,370.759V476.69h141.241v-70.621v-35.31H185.379z"/>
+<g>
+	<path style="fill:#CBD4D8;" d="M269.241,512h-26.483c-7.945,0-15.89-3.531-21.186-10.593l-18.538-24.717h105.931l-18.538,24.717
+		C285.131,508.469,277.186,512,269.241,512"/>
+	<path style="fill:#CBD4D8;" d="M247.172,414.897c5.297,0,8.828-3.531,8.828-8.828s-3.531-8.828-8.828-8.828h-61.793v17.655H247.172
+		z"/>
+	<path style="fill:#CBD4D8;" d="M220.69,450.207c5.297,0,8.828-3.531,8.828-8.828s-3.531-8.828-8.828-8.828h-35.31v17.655H220.69z"
+		/>
+	<path style="fill:#CBD4D8;" d="M326.621,397.241h-35.31c-5.297,0-8.828,3.531-8.828,8.828s3.531,8.828,8.828,8.828h35.31v-8.828
+		V397.241z"/>
+	<path style="fill:#CBD4D8;" d="M264.828,432.552c-5.297,0-8.828,3.531-8.828,8.828s3.531,8.828,8.828,8.828h61.793v-17.655H264.828
+		z"/>
+</g>
+</svg>
+    
+    <svg version="1.1" id="light_b_5" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve" width="40px">
+<path style="fill:#F0CE49;" d="M422.841,152.717C414.014,73.269,350.455,9.71,271.007,0.883C265.71,0.883,261.297,0,256,0
+	c-5.297,0-9.71,0-15.007,0.883C161.545,9.71,97.986,74.152,89.159,152.717c-6.179,56.497,15.007,107.697,52.083,143.007
+	c21.186,20.303,38.841,46.786,44.138,75.034h141.241c5.297-28.248,22.952-54.731,44.138-75.034
+	C407.834,260.414,429.021,209.214,422.841,152.717"/>
+<path style="fill:#B79529;" d="M203.034,176.552c-9.71,0-17.655,7.945-17.655,17.655c0,9.71,7.945,17.655,17.655,17.655h17.655
+	v-17.655C220.69,184.497,212.745,176.552,203.034,176.552L203.034,176.552z M291.31,211.862h17.655
+	c9.71,0,17.655-7.945,17.655-17.655c0-9.71-7.945-17.655-17.655-17.655s-17.655,7.945-17.655,17.655V211.862z M282.483,379.586
+	c-5.297,0-8.828-3.531-8.828-8.828V229.517h-35.31v141.241c0,5.297-3.531,8.828-8.828,8.828s-8.828-3.531-8.828-8.828V229.517
+	h-17.655c-19.421,0-35.31-15.89-35.31-35.31s15.89-35.31,35.31-35.31s35.31,15.89,35.31,35.31v17.655h35.31v-17.655
+	c0-19.421,15.89-35.31,35.31-35.31s35.31,15.89,35.31,35.31s-15.89,35.31-35.31,35.31H291.31v141.241
+	C291.31,376.055,287.779,379.586,282.483,379.586L282.483,379.586z"/>
+<path style="fill:#E8EDEE;" d="M185.379,370.759V476.69h141.241v-70.621v-35.31H185.379z"/>
+<g>
+	<path style="fill:#CBD4D8;" d="M269.241,512h-26.483c-7.945,0-15.89-3.531-21.186-10.593l-18.538-24.717h105.931l-18.538,24.717
+		C285.131,508.469,277.186,512,269.241,512"/>
+	<path style="fill:#CBD4D8;" d="M247.172,414.897c5.297,0,8.828-3.531,8.828-8.828s-3.531-8.828-8.828-8.828h-61.793v17.655H247.172
+		z"/>
+	<path style="fill:#CBD4D8;" d="M220.69,450.207c5.297,0,8.828-3.531,8.828-8.828s-3.531-8.828-8.828-8.828h-35.31v17.655H220.69z"
+		/>
+	<path style="fill:#CBD4D8;" d="M326.621,397.241h-35.31c-5.297,0-8.828,3.531-8.828,8.828s3.531,8.828,8.828,8.828h35.31v-8.828
+		V397.241z"/>
+	<path style="fill:#CBD4D8;" d="M264.828,432.552c-5.297,0-8.828,3.531-8.828,8.828s3.531,8.828,8.828,8.828h61.793v-17.655H264.828
+		z"/>
+</g>
+</svg>
+    
+    <svg version="1.1" id="light_b_6" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve" width="40px">
+<path style="fill:#F0CE49;" d="M422.841,152.717C414.014,73.269,350.455,9.71,271.007,0.883C265.71,0.883,261.297,0,256,0
+	c-5.297,0-9.71,0-15.007,0.883C161.545,9.71,97.986,74.152,89.159,152.717c-6.179,56.497,15.007,107.697,52.083,143.007
+	c21.186,20.303,38.841,46.786,44.138,75.034h141.241c5.297-28.248,22.952-54.731,44.138-75.034
+	C407.834,260.414,429.021,209.214,422.841,152.717"/>
+<path style="fill:#B79529;" d="M203.034,176.552c-9.71,0-17.655,7.945-17.655,17.655c0,9.71,7.945,17.655,17.655,17.655h17.655
+	v-17.655C220.69,184.497,212.745,176.552,203.034,176.552L203.034,176.552z M291.31,211.862h17.655
+	c9.71,0,17.655-7.945,17.655-17.655c0-9.71-7.945-17.655-17.655-17.655s-17.655,7.945-17.655,17.655V211.862z M282.483,379.586
+	c-5.297,0-8.828-3.531-8.828-8.828V229.517h-35.31v141.241c0,5.297-3.531,8.828-8.828,8.828s-8.828-3.531-8.828-8.828V229.517
+	h-17.655c-19.421,0-35.31-15.89-35.31-35.31s15.89-35.31,35.31-35.31s35.31,15.89,35.31,35.31v17.655h35.31v-17.655
+	c0-19.421,15.89-35.31,35.31-35.31s35.31,15.89,35.31,35.31s-15.89,35.31-35.31,35.31H291.31v141.241
+	C291.31,376.055,287.779,379.586,282.483,379.586L282.483,379.586z"/>
+<path style="fill:#E8EDEE;" d="M185.379,370.759V476.69h141.241v-70.621v-35.31H185.379z"/>
+<g>
+	<path style="fill:#CBD4D8;" d="M269.241,512h-26.483c-7.945,0-15.89-3.531-21.186-10.593l-18.538-24.717h105.931l-18.538,24.717
+		C285.131,508.469,277.186,512,269.241,512"/>
+	<path style="fill:#CBD4D8;" d="M247.172,414.897c5.297,0,8.828-3.531,8.828-8.828s-3.531-8.828-8.828-8.828h-61.793v17.655H247.172
+		z"/>
+	<path style="fill:#CBD4D8;" d="M220.69,450.207c5.297,0,8.828-3.531,8.828-8.828s-3.531-8.828-8.828-8.828h-35.31v17.655H220.69z"
+		/>
+	<path style="fill:#CBD4D8;" d="M326.621,397.241h-35.31c-5.297,0-8.828,3.531-8.828,8.828s3.531,8.828,8.828,8.828h35.31v-8.828
+		V397.241z"/>
+	<path style="fill:#CBD4D8;" d="M264.828,432.552c-5.297,0-8.828,3.531-8.828,8.828s3.531,8.828,8.828,8.828h61.793v-17.655H264.828
+		z"/>
+</g>
+</svg>
+
+    </div>
+   <div class="bar">
+ <input type="range" min="1" max="7" value="3" class="slider" id="myRange">
+    </div>
+  
+  <div class="grain">
+    <div class="grain low_grain"><span class="dot"></span><span class="dot"></span><br><span class="dot"></span><span class="dot"></span></div>
+    <div class="grain mid_grain"><span class="dot"></span><span class="dot"></span><span class="dot"></span><br><span class="dot"></span><span class="dot"></span><span class="dot"></span><br><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+    <div class="grain hi_grain"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><br><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><br><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><br><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+  </div>
+</div>
+
+  
+<div class="i_down">
+  <div class="min">-</div>
+  <div class="num">400</div>
+  <div class="add">+</div>
+  <div class="text"></div>
+  </div>
+
+<a href="shutter_speed.html" class="back">&laquo; Back</a>
+<a href="exposure.html" class="next">Next &raquo;</a>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
+
+  
+
+    <script>
+    	var num=400;
+
+$(".min").click(
+  function(){
+    if (num>100){
+      num=num/2;
+      $(".num").text(num);
+      check();
+      slidercheck();
+    }
+  }
+);
+
+$(".add").click(
+  function(){
+    if (num<6400){
+      num=num*2;
+      $(".num").text(num);
+      check();
+      slidercheck();
+    } 
+  }
+);
+
+function check(){
+  if (num<400){
+    $(".text").text("Tips: Low ISO! Higher quality with less grain!");
+    $(".text").css("color","#fff");
+    $("body").css("background-color"," #6b98ca")
+    $("html").css("background-color"," #6b98ca")
+  }
+  else if (num<1600){
+    $(".text").text("Tips: Ｍedium ISO!");
+    $(".text").css("color","#FFCD05");
+     $("body").css("background-color"," #1f4981")
+    $("html").css("background-color"," #1f4981")
+  }else if (num<6400){
+    $(".text").text("Tips: Hight ISO ! More noise/grain! but can avoid motion blur!");
+    $(".text").css("color","#FF6505");
+    $("body").css("background-color"," #081322")
+    $("html").css("background-color"," #081322")
+  }
+}
+check();
+$(".num").text(num);
+
+function slidercheck(){
+  if(num==400){
+    $(".slider").val(3);
+  }else if(num==200){
+    $(".slider").val(2);
+  }else if(num==100){
+    $(".slider").val(1);
+  }else if(num==800){
+    $(".slider").val(4);
+  }else if(num==1600){
+    $(".slider").val(5);
+  }else if(num==3200){
+    $(".slider").val(6);
+  }else if(num==6400){
+    $(".slider").val(7);
+  }
+}
+    </script>
+
+
+
+
+</body>
+
+</html>
