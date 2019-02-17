@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+  <meta charset="UTF-8">
+  <title>exposure</title>
+</head>
+<style>
+	*{
+/*     border:solid 1px black;  */
+  box-sizing:border-box;
+  vertical-align:top;
+  font-family:Helvetica, Arial, serif;
+  letter-spacing: 0.5px;
+  color:#333;
+}
+
+html,body{
+  width: 100%; height:100%;
+  padding:0px;
+  margin:0px;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+li {
+    display:inline-block;
+/*     border-right: 1px solid #bbb; */
+    width:150px;
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    background-color:#12074e;
+    font-weight:bold;
+}
+
+li a:hover:not(.active) {
+    background-color: #b2b2b2;
+}
+
+.active {
+    background-color: #322482;
+  border-bottom:3px solid white;
+}
+
+.nav{
+  background-color:#12074e;
+   text-align: center;
+   margin:0px;
+}
+
+.eTop{
+  display:block;
+  text-align: center;
+  padding: 0px;
+  margin-left: 30px;
+  margin-right: 30px
+}
+
+.eTop h1{
+  display:inline-block;
+  margin-top: 20px;
+  color:black;
+}
+
+.eTop p{
+  display:inline-block;
+  margin-top: 20px;
+  margin-left: 20px;
+  width: 600px;
+  color: #333;
+}
+.eTop b{
+   color:#BF2900
+}
+
+.tip{
+width: 300px;
+height:250px;
+margin-left:150px;
+letter-spacing: 0.5px;
+line-height: 18px
+
+}
+.exposure-calculator {
+  background-color: #b5c5e5;
+  border: 2px solid #333;
+  padding:  30px;
+  position:absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  
+}
+
+.exposure-page-title {
+  color: #fffff8;
+  font-size: 22px;
+  font-weight: 900;
+  text-align: center;
+  text-transform: uppercase;
+  text-shadow:1px 1px black;
+}
+
+.exposure-property {
+  display: block;
+}
+
+.exposure-property-title {
+  margin: 5px;
+  font-size:15px;
+}
+
+.exposure-property .exposure-property-title {
+  text-align: center;
+}
+
+select {
+  background-color: #efefef;
+  font-size: 16px;
+}
+
+.full-stop {
+  background-color: #fff;
+  font-size: 14px;
+  font-weight: 900;
+}
+
+button {
+  margin-top: 1em;
+}
+
+.submitButton,
+.ev-holder,
+.actual-exposure-holder,
+.exposure-settings-holder,
+.actual-exposure-information,
+.updated-exposure-information,
+select {
+  width: 100%;
+}
+
+.submitButton {
+      -webkit-transition-duration: 0.4s; 
+    transition-duration: 0.4s;
+  font-size: 16px;
+  font-weight: 500;
+  height: 2.5em;
+  line-height: 1;
+  margin: 2em 0 1em;
+  background-color:#12074e;
+  border: none;
+  color:white;
+  cursor: pointer;
+}
+
+.submitButton:hover{
+   background-color: white; 
+    color: #1D263D;
+    border: 2px solid #12074e;
+}
+.actual-exposure-holder,
+.camera-settings-holder {
+  display: block;
+}
+
+.actual-exposure-holder .exposure-property-title,
+.camera-settings-holder .exposure-property-title,
+.nd-filter-holder .exposure-property-title {
+  font-size: 1em;
+  font-weight: 800;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.equivalent-values,
+.actual-exposure-information span,
+.updated-exposure-information span {
+  font-weight: 800;
+  line-height: 1;
+}
+
+.equivalent-values {
+  display: inline-block;
+  line-height: 1;
+  width: 48%;
+}
+
+.equivalent-values:nth-child(1) {}
+
+.equivalent-values:nth-child(2) {
+  float: right;
+  margin-left: 1%;
+  text-align: right;
+}
+
+.exposure-value-title {
+  color: #666;
+}
+
+.exposure-value {
+  color: #fffff8;
+  font-size: 20px;
+}
+
+.actual-exposure-information,
+.updated-exposure-information {
+  display: inline-block;
+  line-height: 1.5;
+  width: 32%;
+}
+
+.actual-exposure-information span,
+.updated-exposure-information span {
+  display: block;
+}
+
+.actual-exposure-information:nth-child(3n+2),
+.updated-exposure-information:nth-child(3n+2) {
+  float: left;
+  text-align: left;
+}
+
+.actual-exposure-information:nth-child(3n+0),
+.updated-exposure-information:nth-child(3n+0) {
+  text-align: center;
+}
+
+.actual-exposure-information:nth-child(3n+1),
+.updated-exposure-information:nth-child(3n+1) {
+  float: right;
+  text-align: right;
+}
+
+table {
+    border-collapse: collapse;
+   text-align: left;
+  margin-left:150px
+}
+
+table, th, td {
+    border: none;
+  padding:5px;
+}
+
+tr:nth-child(even){background-color: #b5c5e5}
+
+th {
+    background-color:#12074e;
+    color: white;
+}
+
+a{
+    text-decoration: none;
+    display: inline-block;
+    padding: 8px 16px;
+}
+
+a:hover {
+    background-color: #ddd;
+    color: black;
+}
+
+.back{
+
+    color: white;
+   -webkit-transition-duration: 0.4s; 
+    transition-duration: 0.4s;
+    background-color: #12074e;
+    padding: 10px 30px;
+  float:left;
+}
+
+.next {
+    color: white;
+   -webkit-transition-duration: 0.4s; 
+    transition-duration: 0.4s;
+    background-color: #12074e;
+    padding: 10px 30px;
+  float:right;
+}
+</style>
+<body>
+
+  <ul class="nav">
+  <li><a href="index.html" class="botton">Home</a></li>
+<li><a href="aperture.html" class="button">Aperture</a></li>
+<li><a href="shutter_speed.html" class="button">Shutter Speed</a></li>
+  <li><a href="iso.html" class="button">ISO</a></li>
+  <li><a href="exposure.html" class="active">Exposure</a></li>
+</ul>
+
+<div class="eTop">
+  <h1>Exposure</h1>
+  <p>In photography, exposure is the amount of light per unit area reaching a photographic film or electronic image sensor, as determined by shutter speed, lens aperture and scene luminance.<br><br><b>Adjust the Aperture Value, Shutter Speed, and ISO to calculate your Exposure Values and Light Values!</b></p>
+  </div>
+
+      
+<div class="exposure-calculator">
+  <h1 class="exposure-page-title">Exposure Calculator</h1>
+  <div class="exposure-property-holder">
+    <div id="aperture" class="exposure-property">
+      <h3 class="exposure-property-title">Aperture Value:</h3>
+      <select name="aperture-value" id="aperture-value">
+          <option value="1.414" class="full-stop">f/1.4</option>
+          <option value="2.828" class="full-stop">f/2.8</option>
+          <option value="4" class="full-stop">f/4</option>
+          <option value="5.657" class="full-stop">f/5.6</option>
+          <option value="8" class="full-stop">f/8</option>
+          <option value="11.314" class="full-stop" selected="">f/11</option>
+          <option value="16.0" class="full-stop">f/16</option>
+          <option value="22.627" class="full-stop">f/22</option>
+        </select>
+    </div>
+
+    <div id="shutterSpeed" class="exposure-property">
+      <h3 class="exposure-property-title">Shutter Speed:</h3>
+      <select name="shutterSpeed-value" id="shutterSpeed-value">
+
+          <option value="0.0009766" class="full-stop">1/1000</option>
+          <option value="0.0019531" class="full-stop">1/500</option>
+          <option value="0.0039063" class="full-stop">1/250</option>
+          <option value="0.0078125" class="full-stop" selected="">1/125</option>
+          <option value="0.015625" class="full-stop">1/60</option>
+          <option value="0.03125" class="full-stop">1/30</option>
+          <option value="0.0625" class="full-stop">1/15</option>
+          <option value="0.125" class="full-stop">1/8</option>
+          <option value="0.25" class="full-stop">1/4</option>
+          <option value="0.5" class="full-stop">1/2</option>
+        </select>
+    </div>
+
+    <div id="iso" class="exposure-property">
+      <h3 class="exposure-property-title">ISO:</h3>
+      <select name="iso-value" id="iso-value">
+          <option value="100/100" class="full-stop" selected="">100</option>
+          <option value="200/200" class="full-stop">200</option>
+          <option value="400/400" class="full-stop">400</option>
+          <option value="800/800" class="full-stop">800</option>
+          <option value="1600/1600" class="full-stop">1600</option>
+          <option value="3200/3200" class="full-stop">3200</option>
+          <option value="6400/6400" class="full-stop">6400</option>
+          
+        </select>
+    </div>
+  </div>
+
+  <button onclick="calculateExposure()" type="button" class="submitButton">Calculate Exposure Information &raquo;</button>
+
+  <hr class="hr">
+
+  <div class="ev-holder">
+    <div class="equivalent-values">
+      <h3 class="exposure-property-title">Exposure Value:</h3>
+      <span id="exposure-value" class="exposure-value">-</span> EV
+    </div>
+    <div class="equivalent-values">
+      <h3 class="exposure-property-title">Light Value:</h3>
+      <span id="light-value" class="exposure-value">-</span> EV<sub id="light-value-iso"></sub>
+    </div>
+  </div>
+
+  <div class="camera-settings-holder">
+    <h3 class="exposure-property-title">Exposure Settings: </h3>
+    <div class="updated-exposure-information">
+      <span class="exposure-value-title">Aperture Value:</span>
+      <span class="exposure-value" id="camera-aperture-value"></span>
+    </div>
+    <div class="updated-exposure-information">
+      <span class="exposure-value-title">Shutter Speed:</span>
+      <span class="exposure-value" id="camera-shutterspeed-value"></span>
+    </div>
+    <div class="updated-exposure-information">
+      <span class="exposure-value-title">ISO:</span>
+      <span class="exposure-value" id="camera-iso-value"></span>
+    </div>
+    
+    <div class="actual-exposure-holder">
+    <h3 class="exposure-property-title">Actual Exposure Information: </h3>
+    <div class="actual-exposure-information">
+      <span class="exposure-value-title">Actual Aperture Value:</span>
+      <span class="exposure-value" id="actual-aperture-value"></span>
+    </div>
+    <div class="actual-exposure-information">
+      <span class="exposure-value-title">Actual ShutterSpeed:</span>
+      <span class="exposure-value" id="actual-shutterspeed-value"></span>
+    </div>
+    <div class="actual-exposure-information">
+      <span class="exposure-value-title">Actual ISO:</span>
+      <span class="exposure-value" id="actual-iso-value"></span>
+    </div>
+  </div>
+  </div>
+  </div>
+  
+  <div class="tip"><p>
+An <b>exposure value (EV)</b> is the exposure settings on your camera for a particular combination of a camera's shutter speed and aperture f-numbers.<br>
+A <b>light value (LV)</b> is a measure of the luminance of a scene.<br>
+Luminance is the amount of light reflecting off of the subject.And illumination is the amount of light falling on the subject.
+<br>
+    <b>Light values are linked to exposure values by way of the ISO setting of the camera.</b>
+  </p></div>
+
+<div class="table">
+  <table border="1">
+<tr>
+<th>Lighting Condition</th> <th>EV</th>
+</tr>
+<tr>
+<td>Full Sunlight, Snow</td><td>16</td></tr>
+<tr>
+<td>Cloudy</td><td>13</td>
+</tr>
+<tr>
+<td>Thick Clouds/ Sunrise/ Sunset</td><td>12</td>
+</tr>
+<tr>
+<td>Dusk/ Dawn</td><td>5-11</td>
+</tr>
+<tr>
+<td>Night/ Bright Street</td><td>7-8</td>
+</tr>
+<tr>
+<td>Indoor/ Artificial Light</td><td>5-8</td>
+</tr>
+<tr>
+<td>Night, near lighted buildings</td><td>5</td>
+</tr>
+<tr>
+<td>Night, distant lighted buildings</td><td>2-3</td>
+</tr>
+   
+    
+</table>
+</div>
+
+ 
+<a href="iso.html" class="back">&laquo; Back</a>
+<a href="index.html" class="next">Home &raquo;</a>
+  
+  
+
+    <script>
+    	var exposureSettings = [];
+
+var calculateExposure = function(exposureProperty) {
+  "use strict";
+
+  var getExposureValues = (function() {
+    for (var i = exposureProperties.length - 1; i >= 0; i--) {
+      var currentExposureProperty = document.getElementById(exposureProperties[i] + "-value");
+      if (currentExposureProperty) {
+        var currentExposurePropertyName = exposureProperties[i];
+        var currentExposurePropertyIndex = currentExposureProperty.selectedIndex;
+        var currentExposurePropertySettingValue = currentExposureProperty.options[currentExposurePropertyIndex].text;
+        var currentExposurePropertyActualValue = currentExposureProperty.options[currentExposurePropertyIndex].value;
+        exposureSettings[i] = [currentExposurePropertyName, currentExposurePropertySettingValue, currentExposurePropertyActualValue, currentExposurePropertyIndex, currentExposureProperty];
+      } else {
+        console.log(exposureProperties[i] + "-value" + " not found");
+      } 
+    } 
+  })();
+
+  var addExposureSettingsHTML = (function() {
+    if (typeof exposureSettings[0] === "object") {
+      document.getElementById("camera-aperture-value").innerHTML = exposureSettings[0][1];
+      document.getElementById("camera-shutterspeed-value").innerHTML = exposureSettings[1][1];
+      document.getElementById("camera-iso-value").innerHTML = exposureSettings[2][1];
+      document.getElementById("actual-aperture-value").innerHTML = exposureSettings[0][2];
+      document.getElementById("actual-shutterspeed-value").innerHTML = exposureSettings[1][2];
+      document.getElementById("actual-iso-value").innerHTML = exposureSettings[2][2].split("/")[0];
+    }
+  })();
+
+  var equivalentExposureValues = (function() {
+    if (typeof exposureSettings[0] === "object") {
+      var eev = Math.log2(Number(exposureSettings[0][2]) * Number(exposureSettings[0][2]) / Number(exposureSettings[1][2]));
+      var light = Math.log2(Number(exposureSettings[2][2].split("/")[0]) / 100);
+      var lev = eev + light;
+
+      document.getElementById("exposure-value").innerHTML = eev.toFixed(2);
+      document.getElementById("light-value").innerHTML = lev.toFixed(2);
+      document.getElementById("light-value-iso").innerHTML = exposureSettings[2][1];
+    }
+  })();
+
+}; 
+
+
+var exposureProperties = ["aperture", "shutterSpeed", "iso"];
+calculateExposure(exposureProperties);
+
+
+    </script>
+
+
+
+
+</body>
+
+</html>
